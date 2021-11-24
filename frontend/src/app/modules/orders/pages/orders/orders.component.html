@@ -1,0 +1,36 @@
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="orderDate">
+    <th mat-header-cell *matHeaderCellDef> Ordered </th>
+    <td mat-cell *matCellDef="let element"> {{element.orderDate}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="requiredDate">
+    <th mat-header-cell *matHeaderCellDef> Required </th>
+    <td mat-cell *matCellDef="let element"> {{element.requiredDate}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="shippedDate">
+    <th mat-header-cell *matHeaderCellDef> Shipped </th>
+    <td mat-cell *matCellDef="let element"> {{element.shippedDate}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nrOrderDetails">
+    <th mat-header-cell *matHeaderCellDef> Nr Details </th>
+    <td mat-cell *matCellDef="let element"> {{element.nrOrderDetails}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="button">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <a routerLink="/orders/details/{{element.id}}">
+        <button mat-raised-button>OrderDetails for Order {{element.id}}</button>
+      </a>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
