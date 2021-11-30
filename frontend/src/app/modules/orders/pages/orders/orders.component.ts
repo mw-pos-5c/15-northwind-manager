@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Employee from "../../../../../models/Employee";
 import Order from "../../../../../models/Order";
+import {NorthwindService} from "../../../../services/northwind.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-orders',
@@ -12,11 +14,15 @@ export class OrdersComponent implements OnInit {
 
   displayedColumns: string[] = ['orderDate', 'requiredDate', 'shippedDate', 'nrOrderDetails', 'button'];
 
-  dataSource: Order[] = [{id: 42, orderDate: new Date(), requiredDate: new Date(), shippedDate: new Date(), nrOrderDetails: 42}];
+  constructor(public service: NorthwindService, private route: ActivatedRoute) { }
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(value => {
+      const id = value.get("id") || '';
+      this.service.loadOrders(id);
+    })
+
   }
 
 }

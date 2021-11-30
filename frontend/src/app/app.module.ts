@@ -8,19 +8,29 @@ import { CustomersComponent } from './pages/customers/customers.component';
 import { EmployeesComponent } from './pages/employees/employees.component';
 import {AngularMaterialModule} from "./modules/angular-material/angular-material.module";
 import {MatTableModule} from "@angular/material/table";
+import {HttpClientModule} from "@angular/common/http";
+import { EllipsisNotationPipe } from './pipes/ellipsis-notation.pipe';
+import { UrlErrorComponent } from './pages/url-error/url-error.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    EllipsisNotationPipe,
+    UrlErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
+    MatCardModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

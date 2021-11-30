@@ -235,8 +235,7 @@ namespace NorthwindManagerDb
                     .HasForeignKey(d => d.RegionId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
-
-            OnModelCreatingPartial(modelBuilder);
+            
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

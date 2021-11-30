@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using NorthwindManagerDb;
 using System;
 
+using NorthwindManager.Services;
+
 namespace NorthwindManager
 {
   public class Startup
@@ -30,7 +32,8 @@ namespace NorthwindManager
       if (connectionString.Contains(dataDirKey)) connectionString = connectionString.Replace(dataDirKey, dataDirectory + System.IO.Path.DirectorySeparatorChar);
       Console.WriteLine($"connectionString={connectionString}");
       services.AddDbContext<NorthwindManagerContext>(options => options.UseSqlite(connectionString));
-
+      services.AddScoped<NorthwindService>();
+      
       services.AddCors(options =>
       {
         options.AddPolicy(myAllowSpecificOrigins,
